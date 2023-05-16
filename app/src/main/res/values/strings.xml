@@ -4,4 +4,5 @@
     <string name="save">save</string>
     <string name="et_count_hint">Count:</string>
     <string name="et_name_hint">Name:</string>
+    <string name="error_input_count">Error Input Count</string>
 </resources>
