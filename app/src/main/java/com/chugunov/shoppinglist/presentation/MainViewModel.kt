@@ -1,25 +1,21 @@
 package com.chugunov.shoppinglist.presentation
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.chugunov.shoppinglist.data.ShopListRepositoryImpl
 import com.chugunov.shoppinglist.domain.DeleteShopItemUseCase
 import com.chugunov.shoppinglist.domain.EditShopItemUseCase
 import com.chugunov.shoppinglist.domain.GetShopListUseCase
 import com.chugunov.shoppinglist.domain.ShopItem
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(application: Application): AndroidViewModel(application) {
-
-    private val repository = ShopListRepositoryImpl(application)
-
-    private val getShopListUseCase = GetShopListUseCase(repository)
-    private val deleteShopItemUseCase = DeleteShopItemUseCase(repository)
-    private val editShopItemUseCase = EditShopItemUseCase(repository)
+class MainViewModel @Inject constructor(
+    private val getShopListUseCase: GetShopListUseCase,
+    private val deleteShopItemUseCase: DeleteShopItemUseCase,
+    private val editShopItemUseCase: EditShopItemUseCase
+) : ViewModel() {
 
     val shopList = getShopListUseCase.getShopList()
-
 
 
     fun deleteShopItem(shopItem: ShopItem) {

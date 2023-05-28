@@ -1,21 +1,18 @@
 package com.chugunov.shoppinglist.data
 
-import android.app.Application
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.chugunov.shoppinglist.domain.ShopItem
 import com.chugunov.shoppinglist.domain.ShopListRepository
-import kotlin.random.Random
+import javax.inject.Inject
 
-class ShopListRepositoryImpl(
-    application: Application
+class ShopListRepositoryImpl @Inject constructor(
+    private val shopListDao: ShopListDao,
+    private val mapper: ShopListMapper
 ) : ShopListRepository {
 
-    private val shopListDao = AppDatabase.getInstance(application).shopListDao()
-    private val mapper = ShopListMapper()
-
+//    private val shopListDao = AppDatabase.getInstance(application).shopListDao()
+//    private val mapper = ShopListMapper()
 
 
     override suspend fun addShopItem(shopItem: ShopItem) {
