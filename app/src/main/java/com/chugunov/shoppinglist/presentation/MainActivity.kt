@@ -1,5 +1,6 @@
 package com.chugunov.shoppinglist.presentation
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -52,6 +53,14 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
                 launchFragment(ShopItemFragment.newInstanceAddItem())
             }
         }
+        contentResolver.query(
+            Uri.parse("content://com.chugunov.shoppinglist/shop_items"),
+            null,
+            null,
+            null,
+            null,
+            null,
+        )
     }
 
     override fun onEditingFinished() {
