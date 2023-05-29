@@ -54,6 +54,15 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
             }
         }
         contentResolver.query(
+            Uri.parse("content://com.chugunov.shoppinglist/shop_items/5"),
+            null,
+            null,
+            null,
+            null,
+            null,
+        )
+
+        contentResolver.query(
             Uri.parse("content://com.chugunov.shoppinglist/shop_items"),
             null,
             null,
